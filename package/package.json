@@ -1,9 +1,8 @@
 {
   "name": "async-kafka-consumer",
-  "version": "1.0.1",
+  "version": "0.0.2",
   "description": "async kafka consumer compiled",
   "module": "dist/kafka-consumer.esm.min.js",
-  "browser": "dist/kafka-consumer.umd.min.js",
   "main": "dist/kafka-consumer.esm.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
