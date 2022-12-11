@@ -1,10 +1,10 @@
-import { Kafka} from 'kafkajs';
+const kafka = require('kafkajs');
 
 const maxBufferSize = 10;
 let buffer = [];
 
 async function AsyncConsumer(options) {
-    const kafkaClient = new Kafka({
+    const kafkaClient = new kafka.Kafka({
         clientId: options.clientId,
         brokers: options.brokers,
     });
