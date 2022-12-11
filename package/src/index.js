@@ -61,5 +61,3 @@ function storeMessage(topic, message, partition) {
             return buff;
         });
 }
-
-export default AsyncConsumer
