@@ -1,6 +1,6 @@
 {
   "name": "async-kafka-consumer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "async kafka consumer compiled",
   "module": "dist/kafka-consumer.esm.min.js",
   "main": "dist/kafka-consumer.esm.min.js",
