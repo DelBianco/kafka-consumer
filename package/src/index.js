@@ -10,14 +10,15 @@ async function AsyncConsumer(options) {
     });
     const kafkaConsumer = kafkaClient.consumer({groupId: options.groupId});
     const kafkaAdmin = kafkaClient.admin();
-    let timer = 10;
+    let timer = 30;
     setInterval(() => {
         timer -= 1;
     }, 1000);
-    let topicList = await this.kafkaAdmin.listTopics();
+    let topicList = await kafkaAdmin.listTopics();
+    await kafkaAdmin.disconnect();
     topicList = topicList.filter((topic) => topic.substring(0, 2) !== '__');
     topicList.forEach((topic) => {
-        this.buffer?.push({
+        buffer?.push({
             topic,
             buffer: []
         });
@@ -34,13 +35,14 @@ async function AsyncConsumer(options) {
                 storeMessage(topic, `${message.value}`, partition);
                 if (timer === 0) {
                     pause();
-                    throw new DOMException('timeout');
+                    throw new Error('timeout');
                 }
             },
         });
     } catch (error) {
-        await kafkaConsumer.disconnect();
+        console.log(error);
     }
+    await kafkaConsumer.disconnect();
 }
 
 function storeMessage(topic, message, partition) {
